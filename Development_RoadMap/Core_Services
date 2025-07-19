@@ -1,0 +1,30 @@
+🔧 Backend Services
+Purpose	Service Used
+API hosting	Cloud Run (GCP)
+Database	Cloud Firestore
+User authentication	Firebase Authentication
+Website file storage	Cloud Storage (GCP buckets)
+Email notifications (optional)	SendGrid / Firebase Extensions
+Project metadata storage	Firestore (projects collection)
+Stripe webhook/API handling	Cloud Functions or Cloud Run
+
+🎨 Frontend Services
+Purpose	Service Used
+Landing page & marketing site	Firebase Hosting
+Website builder/editor	Custom React/Next.js app
+Dashboard for customers	React (via Firebase Hosting)
+Role-based internal dashboard	Separate dashboard UI in Templates/RBAC
+Template storage for builder	Local project structure (e.g., @/Templates/)
+
+💵 Billing & Payments
+Purpose	Service Used
+Subscription plans	Stripe
+Customer billing portal	Stripe Checkout + Billing
+Usage tracking / metering	Firestore + custom logic
+
+🌍 Site Publishing & Domain Management
+Purpose	Service Used
+Custom subdomain routing	Firebase Hosting Multi-Site / Rewrite Rules
+Custom domain verification	Firebase Hosting domain linking
+Asset deployment	Cloud Storage + Firebase Hosting
+SSL certificates	Firebase Hosting (auto)
