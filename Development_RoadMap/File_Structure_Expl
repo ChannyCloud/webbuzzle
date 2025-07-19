@@ -1,0 +1,90 @@
+webbuzzle-platform/
+│
+├── apps/                    # Apps (Monorepo style for separation of services and UI)
+│   ├── admin-portal/        # Admin dashboard frontend
+│   ├── user-portal/         # Main user-facing website builder frontend
+│   ├── landing-site/        # Marketing website frontend
+│   └── backend-api/         # Main backend API
+│
+├── services/                # Internal and external services (can grow into microservices)
+│   ├── auth-service/        # Handles user auth (JWT, OAuth, 2FA)
+│   ├── billing-service/     # Stripe or other billing management
+│   ├── website-engine/      # Core engine to render and host user sites
+│   ├── site-editor-api/     # API specifically for the drag-and-drop builder
+│   ├── domain-manager/      # Manages domains, DNS, SSL
+│   └── analytics-service/   # Tracks user visits, actions, etc
+│
+├── libs/                    # Shared code across apps/services
+│   ├── ui/                  # Reusable React components / UI kit
+│   ├── utils/               # Utility functions and helpers
+│   ├── hooks/               # React hooks shared across frontends
+│   ├── types/               # Shared TypeScript types/interfaces
+│   └── api-client/          # SDK for calling backend from frontends
+│
+├── infra/                   # Infrastructure as code (Terraform, Docker, k8s, etc.)
+│   ├── docker/              # Dockerfiles and compose scripts
+│   ├── k8s/                 # Kubernetes manifests
+│   ├── terraform/           # IaC scripts for cloud provisioning
+│   └── nginx/               # Reverse proxy and SSL config
+│
+├── scripts/                 # Utility scripts (DB reset, build, deploy)
+│
+├── config/                  # Global config (env vars, service maps)
+│   ├── dev/                 # Dev-specific configs
+│   ├── prod/                # Prod-specific configs
+│   └── staging/             # Staging configs
+│
+├── data/                    # Static files, seed data, mock data
+│
+├── docs/                    # Documentation (architecture, onboarding)
+│
+├── tests/                   # Global integration/e2e tests
+│
+├── .env.example             # Sample env file
+├── README.md
+└── package.json             # If using npm workspaces or Yarn/PNPM monorepo
+
+# New explanations for the added files and directories
+├── themes/                  # For prebuilt templates and themes, useful for the drag-and-drop builder and letting users choose a design starter.
+│   ├── minimal-portfolio/   # A minimalistic portfolio template.
+│   ├── tech-blog/           # A template designed for technology blogs.
+│   └── ecommerce-starter/   # A starter template for e-commerce websites.
+│
+├── middleware/              # Reusable API or frontend middlewares, useful if using Node.js or Express, or middleware in Next.js/Vite/etc.
+│   ├── auth.ts              # Middleware for handling authentication.
+│   ├── rateLimiter.ts       # Middleware for rate limiting requests.
+│   └── errorHandler.ts      # Middleware for handling errors.
+│
+├── hooks/                   # Split if each frontend has unique hooks.
+│   ├── apps/user-portal/hooks/  # Custom hooks for the user portal.
+│   └── apps/admin-portal/hooks/ # Custom hooks for the admin portal.
+│
+├── email-templates/         # For transactional emails that can be dynamically rendered via services like SendGrid, Resend, etc.
+│   ├── welcome.html         # Template for welcome emails.
+│   ├── reset-password.html  # Template for password reset emails.
+│   └── subscription-expired.html # Template for subscription expiration notifications.
+│
+├── cli/                     # Command-line tools or dev CLIs for speeding up dev workflows or debugging.
+│   ├── generate-template.ts  # CLI tool for generating templates.
+│   └── export-user-data.ts   # CLI tool for exporting user data.
+│
+├── extensions/              # For supporting 3rd-party or plugin-style features.
+│   ├── zapier/              # Integration with Zapier.
+│   ├── shopify/             # Integration with Shopify.
+│   └── ai-assist/           # Integration for AI assistance.
+│
+├── queues/                  # For background job workers (bull, celery, etc.), especially relevant for heavy tasks like PDF generation, async processing, or email delivery.
+│   ├── services/analytics-service/queues/ # Queues for the analytics service.
+│   └── services/billing-service/jobs/     # Jobs for the billing service.
+│
+├── logs/                    # Local dev or Docker container logs.
+│   ├── dev.log              # Log file for development.
+│   └── error.log            # Log file for errors.
+│
+├── migrations/              # If using a DB like Postgres or Mongo, for versioned DB schema changes.
+│   └── apps/backend-api/migrations/ # Migrations for the backend API.
+│
+└── locales/                 # For internationalization support, planning multi-language support.
+    ├── en/                  # English translations.
+    ├── es/                  # Spanish translations.
+    └── fr/                  # French translations.
